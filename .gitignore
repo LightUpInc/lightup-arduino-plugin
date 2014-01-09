@@ -2,6 +2,7 @@
 *.slo
 *.lo
 *.o
+.dep/*
 
 # Compiled Dynamic libraries
 *.so
@@ -11,3 +12,6 @@
 *.lai
 *.la
 *.a
+
+# Linux Temp files
+*~
