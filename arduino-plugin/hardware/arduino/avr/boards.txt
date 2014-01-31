@@ -706,10 +706,6 @@ robotMotor.build.extra_flags={build.usb_flags}
 ###############################################################
 
 lightup.name=LightUp
-lightup.vid.0=0x1d50
-lightup.pid.0=0x6083
-lightup.vid.1=0x1d50
-lightup.pid.1=0x6096
 lightup.upload.tool=avrdude
 lightup.upload.protocol=avr109
 lightup.upload.maximum_size=28672
