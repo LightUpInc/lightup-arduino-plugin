@@ -48,11 +48,11 @@ void user_setup();
 
 // These functions intercept calls to the Arduino core libraries. These disable pullups when a pin is
 // used in analog mode and also disable the signal indicator LEDs.
-int lightup_analogRead(int pin);
-int lightup_digitalRead(int pin);
+int lightup_analogRead(uint8_t pin);
+int lightup_digitalRead(uint8_t pin);
 
 // Helper functions.
-static void setSignalLED(int signalPin, int inputPin, boolean isAnalog);
+static void setSignalLED(uint8_t signalPin, uint8_t inputPin, boolean isAnalog);
 
 // Store which input pins have been read as analog pins.
 static boolean input1IsAnalog = false;
@@ -116,7 +116,7 @@ ISR(TIMER1_COMPA_vect) {
 }
 
 // Helper function that only sets signal LEDs when pin is digital.
-static void setSignalLED(int signalPin, int inputPin, boolean isAnalog) {
+static void setSignalLED(uint8_t signalPin, uint8_t inputPin, boolean isAnalog) {
   if (isAnalog) {
     digitalWrite(signalPin, LOW);
   } else {
