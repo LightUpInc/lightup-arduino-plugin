@@ -80,6 +80,8 @@ void lightup_setup_timer() {
   // Set compare match register for 1kHz increments
   // OCR1A = CLOCK_FREQUENCY / PRESCALER / INTERRUPT_FREQUENCY - 1
   OCR1A = 7999; // = (8*10^6) / 1 / (1*10e3) - 1
+  // Select no prescaler and enable counter
+  TCCR1B |= (1 << CS10); 
   // Turn on CTC mode
   TCCR1B |= (1 << WGM12);
   // Enable timer compare interrupt so that ISR runs every millisecond.
