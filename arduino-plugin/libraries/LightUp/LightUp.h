@@ -46,6 +46,22 @@ void lightup_setup_timer();
 // To prevent users from getting confused, a macro renames their setup to user_setup automatically.
 void user_setup();
 
+// These functions intercept calls to the Arduino core libraries. These disable pullups when a pin is
+// used in analog mode and also disable the signal indicator LEDs.
+int lightup_analogRead(uint8_t pin);
+int lightup_digitalRead(uint8_t pin);
+
+// Helper functions.
+static void setSignalLED(uint8_t signalPin, uint8_t inputPin, boolean isAnalog);
+
+// Store which input pins have been read as analog pins.
+static boolean input1IsAnalog = false;
+static boolean input2IsAnalog = false;
+static boolean input3IsAnalog = false;
+static boolean input4IsAnalog = false;
+static boolean input5IsAnalog = false;
+static boolean input6IsAnalog = false;
+
 // Configure the input and output pins on the block.
 void lightup_setup_io() {
   pinMode(INPUT_1, INPUT_PULLUP);
@@ -92,13 +108,69 @@ void lightup_setup_timer() {
 
 // This code runs every millisecond. 
 ISR(TIMER1_COMPA_vect) {
-  digitalWrite(_LU_INPUT_SIGNAL_1, digitalRead(INPUT_1));
-  digitalWrite(_LU_INPUT_SIGNAL_2, digitalRead(INPUT_2));
-  digitalWrite(_LU_INPUT_SIGNAL_3, digitalRead(INPUT_3));
-  digitalWrite(_LU_INPUT_SIGNAL_4, digitalRead(INPUT_4));
-  digitalWrite(_LU_INPUT_SIGNAL_5, digitalRead(INPUT_5));
-  digitalWrite(_LU_INPUT_SIGNAL_6, digitalRead(INPUT_6));
+  setSignalLED(_LU_INPUT_SIGNAL_1, INPUT_1, input1IsAnalog);
+  setSignalLED(_LU_INPUT_SIGNAL_2, INPUT_2, input2IsAnalog);
+  setSignalLED(_LU_INPUT_SIGNAL_3, INPUT_3, input3IsAnalog);
+  setSignalLED(_LU_INPUT_SIGNAL_4, INPUT_4, input4IsAnalog);
+  setSignalLED(_LU_INPUT_SIGNAL_5, INPUT_5, input5IsAnalog);
+  setSignalLED(_LU_INPUT_SIGNAL_6, INPUT_6, input6IsAnalog);
 }
+
+// Helper function that only sets signal LEDs when pin is digital.
+static void setSignalLED(uint8_t signalPin, uint8_t inputPin, boolean isAnalog) {
+  if (isAnalog) {
+    digitalWrite(signalPin, LOW);
+  } else {
+    digitalWrite(signalPin, digitalRead(inputPin));
+  }
+}
+
+// This intercepts what would otherwise be a call to analogRead. In addition
+// to calling analogRead, it stores the call so we know the pin is analog.
+int lightup_analogRead(uint8_t pin) {
+
+  pinMode(pin, INPUT);
+
+  if (pin == INPUT_1) {
+    input1IsAnalog = true;
+  } else if (pin == INPUT_2)  {
+    input2IsAnalog = true;
+  } else if (pin == INPUT_3)  {
+    input3IsAnalog = true;
+  } else if (pin == INPUT_4)  {
+    input4IsAnalog = true;
+  } else if (pin == INPUT_5)  {
+    input5IsAnalog = true;
+  } else if (pin == INPUT_6)  {
+    input6IsAnalog = true;
+  }
+
+  return analogRead(pin);
+}
+
+// This intercepts what would otherwise be a call to digitalRead. In addition
+// to calling wiring_digitalRead, it stores the call so we know the pin is digital.
+int lightup_digitalRead(uint8_t pin) {
+
+  pinMode(pin, INPUT_PULLUP);
+
+  if (pin == INPUT_1) {
+    input1IsAnalog = false;
+  } else if (pin == INPUT_2)  {
+    input2IsAnalog = false;
+  } else if (pin == INPUT_3)  {
+    input3IsAnalog = false;
+  } else if (pin == INPUT_4)  {
+    input4IsAnalog = false;
+  } else if (pin == INPUT_5)  {
+    input5IsAnalog = false;
+  } else if (pin == INPUT_6)  {
+    input6IsAnalog = false;
+  }
+
+  return digitalRead(pin);
+}
+
 
 // Arduino setup actually invokes the lightup setup routine. The end of this
 // routine calls user_setup which invokes the program's setup routine.
@@ -116,6 +188,10 @@ void setup() {
 
 // Rename the user program's setup function to user_setup.
 #define setup() user_setup()
+
+// Rename Arduino core functions that need to be intercepted.
+#define analogRead(pin) lightup_analogRead(pin)
+#define digitalRead(pin) lightup_digitalRead(pin)
 
 #endif //__LIGHTUP_H__
 
