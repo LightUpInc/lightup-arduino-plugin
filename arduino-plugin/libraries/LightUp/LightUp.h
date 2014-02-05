@@ -48,12 +48,12 @@ void user_setup();
 
 // Configure the input and output pins on the block.
 void lightup_setup_io() {
-  pinMode(INPUT_1, INPUT);
-  pinMode(INPUT_2, INPUT);
-  pinMode(INPUT_3, INPUT);
-  pinMode(INPUT_4, INPUT);
-  pinMode(INPUT_5, INPUT);
-  pinMode(INPUT_6, INPUT);
+  pinMode(INPUT_1, INPUT_PULLUP);
+  pinMode(INPUT_2, INPUT_PULLUP);
+  pinMode(INPUT_3, INPUT_PULLUP);
+  pinMode(INPUT_4, INPUT_PULLUP);
+  pinMode(INPUT_5, INPUT_PULLUP);
+  pinMode(INPUT_6, INPUT_PULLUP);
 
   pinMode(_LU_INPUT_SIGNAL_1, OUTPUT);
   pinMode(_LU_INPUT_SIGNAL_2, OUTPUT);
