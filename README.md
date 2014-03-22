@@ -1,7 +1,7 @@
 lightup-arduino-plugin
 ======================
 
-Requrements
+Requirements
 -----------
 
 The plugin is designed for Arduino 1.5.x and has been tested on Arduino 1.5.5.
