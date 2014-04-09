@@ -16,12 +16,12 @@
 
 // These pins connect to block terminals designed for digital and analog (PWM) output.
 // The block's output terminals are connected to LEDs to display the digital signal value.
-#define OUTPUT_1 5
-#define OUTPUT_2 10
-#define OUTPUT_3 9
-#define OUTPUT_4 11
-#define OUTPUT_5 3
-#define OUTPUT_6 6
+#define OUTPUT_A 5
+#define OUTPUT_B 10
+#define OUTPUT_C 9
+#define OUTPUT_D 11
+#define OUTPUT_E 3
+#define OUTPUT_F 6
 
 // These pins connect to signal LEDs next to the corresponding input pins. Reading the
 // signal on the input pin and then writing it to the signal LED guarantees that the
