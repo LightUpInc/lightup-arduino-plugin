@@ -16,6 +16,10 @@ void setup() {
     // Play it for some time.
     delay(length);
     
-    Stop playing the tone.
+    // Stop playing the tone.
     noTone(OUTPUT_F);
+}
+
+void loop() {
+  
 }
