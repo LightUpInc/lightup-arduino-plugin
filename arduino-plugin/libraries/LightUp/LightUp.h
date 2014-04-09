@@ -194,6 +194,7 @@ void setup() {
 #define digitalRead(pin) lightup_digitalRead(pin)
 
 // Definintions of commonly used things.
+#include "button.h""
 #include "pitches.h"
 
 #endif //__LIGHTUP_H__
