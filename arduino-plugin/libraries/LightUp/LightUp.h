@@ -193,5 +193,8 @@ void setup() {
 #define analogRead(pin) lightup_analogRead(pin)
 #define digitalRead(pin) lightup_digitalRead(pin)
 
+// Definintions of commonly used things.
+#include "pitches.h"
+
 #endif //__LIGHTUP_H__
 
