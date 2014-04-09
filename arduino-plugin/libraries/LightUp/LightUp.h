@@ -78,12 +78,12 @@ void lightup_setup_io() {
   pinMode(_LU_INPUT_SIGNAL_5, OUTPUT);
   pinMode(_LU_INPUT_SIGNAL_6, OUTPUT);
 
-  pinMode(OUTPUT_1, OUTPUT);
-  pinMode(OUTPUT_2, OUTPUT);
-  pinMode(OUTPUT_3, OUTPUT);
-  pinMode(OUTPUT_4, OUTPUT);
-  pinMode(OUTPUT_5, OUTPUT);
-  pinMode(OUTPUT_6, OUTPUT);
+  pinMode(OUTPUT_A, OUTPUT);
+  pinMode(OUTPUT_B, OUTPUT);
+  pinMode(OUTPUT_C, OUTPUT);
+  pinMode(OUTPUT_D, OUTPUT);
+  pinMode(OUTPUT_E, OUTPUT);
+  pinMode(OUTPUT_F, OUTPUT);
 }
 
 void lightup_setup_timer() {
