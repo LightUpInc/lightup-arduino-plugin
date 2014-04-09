@@ -3,6 +3,7 @@
 void setup() {
     // The pitch defines which note to play.
     // Change the value (try 500 and 1500) and listen to the pitch change.
+    // Change the value to NOTE_C4 and listen to a predefined note.
     int pitch = 1000;
     
     // The length defines how long to play the tone.
