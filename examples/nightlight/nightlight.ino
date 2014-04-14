@@ -1,7 +1,7 @@
 #include <LightUp.h>
 
 void setup() {
-
+  disableInputLights();
 }
 
 void loop() {
