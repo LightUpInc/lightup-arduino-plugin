@@ -7,5 +7,5 @@ void setup() {
 void loop() {
   int darkness = analogRead(INPUT_2);
 
-  Serial.println();
+  Serial.println(darkness);
 }
