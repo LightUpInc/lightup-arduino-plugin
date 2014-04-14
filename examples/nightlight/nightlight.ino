@@ -18,5 +18,12 @@ void loop() {
     digitalWrite(OUTPUT_4, HIGH);
     digitalWrite(OUTPUT_5, HIGH);
     digitalWrite(OUTPUT_6, HIGH);
+  } else {
+    digitalWrite(OUTPUT_1, LOW);
+    digitalWrite(OUTPUT_2, LOW);
+    digitalWrite(OUTPUT_3, LOW);
+    digitalWrite(OUTPUT_4, LOW);
+    digitalWrite(OUTPUT_5, LOW);
+    digitalWrite(OUTPUT_6, LOW);
   }
 }
