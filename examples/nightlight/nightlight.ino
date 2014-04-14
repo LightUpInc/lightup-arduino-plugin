@@ -1,11 +1,17 @@
 #include <LightUp.h>
 
+int DARKNESS_THRESHOLD = 50;
+
 void setup() {
   disableInputLights();
 }
 
 void loop() {
-  if (analogRead(INPUT_2) > 50) {
+  // Read the value of the sensor.
+  int darkness = analogRead(INPUT_2);
+
+  // If it is dark, turn on all the lights.
+  if (darkness > DARKNESS_THRESHOLD) {
     digitalWrite(OUTPUT_1, HIGH);
     digitalWrite(OUTPUT_2, HIGH);
     digitalWrite(OUTPUT_3, HIGH);
