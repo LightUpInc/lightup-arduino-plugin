@@ -62,6 +62,9 @@ static boolean input4IsAnalog = false;
 static boolean input5IsAnalog = false;
 static boolean input6IsAnalog = false;
 
+// Globally enable or disable input signal lights.
+static boolean inputLightsAreEnabled = true;
+
 // Configure the input and output pins on the block.
 void lightup_setup_io() {
   pinMode(INPUT_1, INPUT_PULLUP);
@@ -108,12 +111,14 @@ void lightup_setup_timer() {
 
 // This code runs every millisecond. 
 ISR(TIMER1_COMPA_vect) {
-  setSignalLED(_LU_INPUT_SIGNAL_1, INPUT_1, input1IsAnalog);
-  setSignalLED(_LU_INPUT_SIGNAL_2, INPUT_2, input2IsAnalog);
-  setSignalLED(_LU_INPUT_SIGNAL_3, INPUT_3, input3IsAnalog);
-  setSignalLED(_LU_INPUT_SIGNAL_4, INPUT_4, input4IsAnalog);
-  setSignalLED(_LU_INPUT_SIGNAL_5, INPUT_5, input5IsAnalog);
-  setSignalLED(_LU_INPUT_SIGNAL_6, INPUT_6, input6IsAnalog);
+  if (inputLightsAreEnabled) {
+    setSignalLED(_LU_INPUT_SIGNAL_1, INPUT_1, input1IsAnalog);
+    setSignalLED(_LU_INPUT_SIGNAL_2, INPUT_2, input2IsAnalog);
+    setSignalLED(_LU_INPUT_SIGNAL_3, INPUT_3, input3IsAnalog);
+    setSignalLED(_LU_INPUT_SIGNAL_4, INPUT_4, input4IsAnalog);
+    setSignalLED(_LU_INPUT_SIGNAL_5, INPUT_5, input5IsAnalog);
+    setSignalLED(_LU_INPUT_SIGNAL_6, INPUT_6, input6IsAnalog);
+  }
 }
 
 // Helper function that only sets signal LEDs when pin is digital.
@@ -171,6 +176,14 @@ int lightup_digitalRead(uint8_t pin) {
   return digitalRead(pin);
 }
 
+// Functions to disable features of the core.
+void enableInputLights() {
+  inputLightsAreEnabled = true;
+}
+
+void disableInputLights() {
+  inputLightsAreEnabled = false;
+}
 
 // Arduino setup actually invokes the lightup setup routine. The end of this
 // routine calls user_setup which invokes the program's setup routine.
