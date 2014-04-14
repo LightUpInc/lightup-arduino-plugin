@@ -51,9 +51,6 @@ void user_setup();
 int lightup_analogRead(uint8_t pin);
 int lightup_digitalRead(uint8_t pin);
 
-// Helper functions.
-static void setSignalLED(uint8_t signalPin, uint8_t inputPin, boolean isAnalog);
-
 // Store which input pins have been read as analog pins.
 static boolean input1IsAnalog = false;
 static boolean input2IsAnalog = false;
@@ -64,6 +61,13 @@ static boolean input6IsAnalog = false;
 
 // Globally enable or disable input signal lights.
 static boolean inputLightsAreEnabled = true;
+
+// Helper functions.
+static void setSignalLED(uint8_t signalPin, uint8_t inputPin, boolean isAnalog);
+
+// Global functions.
+void enableInputLights();
+void disableInputLights();
 
 // Configure the input and output pins on the block.
 void lightup_setup_io() {
