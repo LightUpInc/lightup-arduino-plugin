@@ -3,6 +3,7 @@
 int DARKNESS_THRESHOLD = 50;
 
 void setup() {
+  // Disable the lights that show the value of the inputs.
   disableInputLights();
 }
 
@@ -10,8 +11,8 @@ void loop() {
   // Read the value of the sensor.
   int darkness = analogRead(INPUT_2);
 
-  // If it is dark, turn on all the lights.
   if (darkness > DARKNESS_THRESHOLD) {
+    // If it is dark, turn on all the lights.
     digitalWrite(OUTPUT_1, HIGH);
     digitalWrite(OUTPUT_2, HIGH);
     digitalWrite(OUTPUT_3, HIGH);
@@ -19,6 +20,7 @@ void loop() {
     digitalWrite(OUTPUT_5, HIGH);
     digitalWrite(OUTPUT_6, HIGH);
   } else {
+    // Otherwise, turn off all the lights.
     digitalWrite(OUTPUT_1, LOW);
     digitalWrite(OUTPUT_2, LOW);
     digitalWrite(OUTPUT_3, LOW);
