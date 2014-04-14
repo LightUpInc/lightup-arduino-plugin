@@ -3,8 +3,7 @@
 int DARKNESS_THRESHOLD = 50;
 
 void setup() {
-  // Disable the lights that show the value of the inputs.
-  disableInputLights();
+
 }
 
 void loop() {
