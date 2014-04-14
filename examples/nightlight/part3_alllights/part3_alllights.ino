@@ -1,6 +1,6 @@
 #include <LightUp.h>
 
-int DARKNESS_THRESHOLD = 50;
+int DARKNESS_THRESHOLD = 150;
 
 void setup() {
 
@@ -12,19 +12,19 @@ void loop() {
 
   if (darkness > DARKNESS_THRESHOLD) {
     // If it is dark, turn on all the lights.
-    digitalWrite(OUTPUT_1, HIGH);
-    digitalWrite(OUTPUT_2, HIGH);
-    digitalWrite(OUTPUT_3, HIGH);
-    digitalWrite(OUTPUT_4, HIGH);
-    digitalWrite(OUTPUT_5, HIGH);
-    digitalWrite(OUTPUT_6, HIGH);
+    digitalWrite(OUTPUT_A, HIGH);
+    digitalWrite(OUTPUT_B, HIGH);
+    digitalWrite(OUTPUT_C, HIGH);
+    digitalWrite(OUTPUT_D, HIGH);
+    digitalWrite(OUTPUT_E, HIGH);
+    digitalWrite(OUTPUT_F, HIGH);
   } else {
     // Otherwise, turn off all the lights.
-    digitalWrite(OUTPUT_1, LOW);
-    digitalWrite(OUTPUT_2, LOW);
-    digitalWrite(OUTPUT_3, LOW);
-    digitalWrite(OUTPUT_4, LOW);
-    digitalWrite(OUTPUT_5, LOW);
-    digitalWrite(OUTPUT_6, LOW);
+    digitalWrite(OUTPUT_A, LOW);
+    digitalWrite(OUTPUT_B, LOW);
+    digitalWrite(OUTPUT_C, LOW);
+    digitalWrite(OUTPUT_D, LOW);
+    digitalWrite(OUTPUT_E, LOW);
+    digitalWrite(OUTPUT_F, LOW);
   }
 }
