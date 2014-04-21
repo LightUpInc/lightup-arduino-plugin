@@ -23,7 +23,7 @@ void loop() {
     
     digitalWrite(OUTPUT_A, HIGH);
     digitalWrite(OUTPUT_B, LOW);
-    digitalWrite(OUTPUT_c, LOW);
+    digitalWrite(OUTPUT_C, LOW);
     
   } else if (voltage > OKAY_VOLTAGE) {
   
