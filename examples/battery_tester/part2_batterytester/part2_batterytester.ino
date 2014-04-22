@@ -24,8 +24,8 @@ void loop() {
   if (voltage >  GOOD_VOLTAGE) {
     
     digitalWrite(OUTPUT_A, HIGH);
-    digitalWrite(OUTPUT_B, LOW);
-    digitalWrite(OUTPUT_C, LOW);
+    digitalWrite(OUTPUT_B, HIGH);
+    digitalWrite(OUTPUT_C, HIGH);
     
   } else if (voltage > OKAY_VOLTAGE) {
   
@@ -36,8 +36,8 @@ void loop() {
   } else {
   
     digitalWrite(OUTPUT_A, HIGH);
-    digitalWrite(OUTPUT_B, HIGH);
-    digitalWrite(OUTPUT_C, HIGH);
+    digitalWrite(OUTPUT_B, LOW);
+    digitalWrite(OUTPUT_C, LOW);
 
   }
   
