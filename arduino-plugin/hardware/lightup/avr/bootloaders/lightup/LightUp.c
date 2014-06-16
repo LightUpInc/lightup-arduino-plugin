@@ -127,6 +127,10 @@ int main(void)
 		// After a power-on reset skip the bootloader and jump straight to sketch 
 		// if one exists.	
 		StartSketch();
+	} else if ((mcusr_state & (1<<BORF)) && (pgm_read_word(0) != 0xFFFF)) {		
+		// After a brown-out reset skip the bootloader and jump straight to sketch 
+		// if one exists.	
+		StartSketch();
 	} else if ((mcusr_state & (1<<WDRF)) && (bootKeyPtrVal != bootKey) && (pgm_read_word(0) != 0xFFFF)) {	
 		// If it looks like an "accidental" watchdog reset then start the sketch.
 		StartSketch();
