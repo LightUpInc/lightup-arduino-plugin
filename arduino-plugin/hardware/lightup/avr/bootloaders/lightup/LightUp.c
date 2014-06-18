@@ -90,19 +90,42 @@ void StartSketch(void)
 	__asm__ volatile("jmp 0x0000");
 }
 
+int startState = 0;
+
 /*	Breathing animation on L LED indicates bootloader is running */
 uint16_t LLEDPulse;
+uint8_t z = 0;
 void LEDPulse(void)
 {
-	LLEDPulse++;
-	uint8_t p = LLEDPulse >> 8;
-	if (p > 127)
-		p = 254-p;
-	p += p;
-	if (((uint8_t)LLEDPulse) > p)
-		L_LED_OFF();
-	else
-		L_LED_ON();
+	L_LED_1_OFF();
+	L_LED_2_OFF();
+	L_LED_3_OFF();
+	L_LED_4_OFF();
+	L_LED_5_OFF();
+	L_LED_6_OFF();
+	if (z == 0) {
+		L_LED_4_ON();
+	} else if (z == 1) {
+		L_LED_5_ON();
+	} else if (z == 2) {
+		L_LED_6_ON();
+	} else if (z == 3) {
+		L_LED_3_ON();
+	} else if (z == 4) {
+		L_LED_2_ON();
+	} else if (z == 5) {
+		L_LED_1_ON();
+	}
+
+	if (LLEDPulse == 0) {
+		z = (z + 1) % 6;
+	}
+
+        LLEDPulse++;
+
+        if (LLEDPulse == 8000) {
+		LLEDPulse = 0;
+	}
 }
 
 /** Main program entry point. This routine configures the hardware required by the bootloader, then continuously
@@ -120,22 +143,23 @@ int main(void)
 
 	/* Watchdog may be configured with a 15 ms period so must disable it before going any further */
 	wdt_disable();
-	
+
 	if (mcusr_state & (1<<EXTRF)) {
 		// External reset -  we should continue to self-programming mode.
+		StartSketch();
 	} else if ((mcusr_state & (1<<PORF)) && (pgm_read_word(0) != 0xFFFF)) {		
 		// After a power-on reset skip the bootloader and jump straight to sketch 
 		// if one exists.	
 		StartSketch();
 	} else if ((mcusr_state & (1<<BORF)) && (pgm_read_word(0) != 0xFFFF)) {		
-		// After a brown-out reset skip the bootloader and jump straight to sketch 
+		// After a power-on reset skip the bootloader and jump straight to sketch 
 		// if one exists.	
 		StartSketch();
 	} else if ((mcusr_state & (1<<WDRF)) && (bootKeyPtrVal != bootKey) && (pgm_read_word(0) != 0xFFFF)) {	
 		// If it looks like an "accidental" watchdog reset then start the sketch.
 		StartSketch();
 	}
-	
+
 	/* Setup hardware required for the bootloader */
 	SetupHardware();
 
