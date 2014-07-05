@@ -1,5 +1,9 @@
 #include <LightUp.h>
 
+void setup() {
+
+}
+
 void loop() {
   digitalWrite(OUTPUT_A, digitalRead(INPUT_1));
   digitalWrite(OUTPUT_B, digitalRead(INPUT_2));
