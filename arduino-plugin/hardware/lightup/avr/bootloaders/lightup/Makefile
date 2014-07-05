@@ -128,7 +128,7 @@ OBJDIR = .
 
 
 # Path to the LUFA library
-LUFA_PATH = ../../../../../../LUFA/LUFA-111009
+LUFA_PATH = /home/tarun/Documents/lightup-arduino-plugin/LUFA-111009/
 
 
 # LUFA library compile-time options and predefined tokens
