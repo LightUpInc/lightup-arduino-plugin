@@ -1,0 +1,3 @@
+[submodule "arduino-plugin/libraries"]
+	path = arduino-plugin/libraries
+	url = git://github.com/LightUpInc/lightup-arduino-library.git
