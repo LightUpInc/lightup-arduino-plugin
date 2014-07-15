@@ -1,4 +1,3 @@
-#define DISABLE_INPUT_SIGNAL_PROPAGATION_TIMER
 #include <LightUp.h>
 
 void on(int pin) {
