@@ -1,12 +1,11 @@
-#define DISABLE_INPUT_SIGNAL_PROPAGATION_TIMER
 #include <LightUp.h>
 
 void on(int pin) {
-  digitalWrite(pin, 1);
+  digitalWrite(pin, HIGH);
 }
 
 void off(int pin) {
-  digitalWrite(pin, 0);
+  digitalWrite(pin, LOW);
 }
 
 void onOff(int pin) {
@@ -16,12 +15,12 @@ void onOff(int pin) {
 }
 
 void allOn() {
-  on(OUTPUT_1);
-  on(OUTPUT_2);
-  on(OUTPUT_3);
-  on(OUTPUT_4);
-  on(OUTPUT_5);
-  on(OUTPUT_6);
+  on(OUTPUT_A);
+  on(OUTPUT_B);
+  on(OUTPUT_C);
+  on(OUTPUT_D);
+  on(OUTPUT_E);
+  on(OUTPUT_F);
   on(_LU_INPUT_SIGNAL_1);
   on(_LU_INPUT_SIGNAL_2);
   on(_LU_INPUT_SIGNAL_3);
@@ -31,12 +30,12 @@ void allOn() {
 }
 
 void allOff() {
-  off(OUTPUT_1);
-  off(OUTPUT_2);
-  off(OUTPUT_3);
-  off(OUTPUT_4);
-  off(OUTPUT_5);
-  off(OUTPUT_6);
+  off(OUTPUT_A);
+  off(OUTPUT_B);
+  off(OUTPUT_C);
+  off(OUTPUT_D);
+  off(OUTPUT_E);
+  off(OUTPUT_F);
   off(_LU_INPUT_SIGNAL_1);
   off(_LU_INPUT_SIGNAL_2);
   off(_LU_INPUT_SIGNAL_3);
@@ -47,6 +46,7 @@ void allOff() {
 
 
 void setup() {
+  disableInputLights();
   allOff();
 }
 
@@ -59,15 +59,15 @@ void loop() {
 
   delay(2000);
 
-  onOff(OUTPUT_1);
-  onOff(OUTPUT_2);
-  onOff(OUTPUT_3);
+  onOff(OUTPUT_A);
+  onOff(OUTPUT_B);
+  onOff(OUTPUT_C);
   onOff(_LU_INPUT_SIGNAL_4);
   onOff(_LU_INPUT_SIGNAL_5);
   onOff(_LU_INPUT_SIGNAL_6);
-  onOff(OUTPUT_6);
-  onOff(OUTPUT_5);
-  onOff(OUTPUT_4);
+  onOff(OUTPUT_F);
+  onOff(OUTPUT_E);
+  onOff(OUTPUT_D);
   onOff(_LU_INPUT_SIGNAL_3);
   onOff(_LU_INPUT_SIGNAL_2);
   onOff(_LU_INPUT_SIGNAL_1);
