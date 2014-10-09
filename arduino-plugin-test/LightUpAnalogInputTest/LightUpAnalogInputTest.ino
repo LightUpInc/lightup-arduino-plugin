@@ -66,11 +66,20 @@ void loop() {
       inRange(INPUT_5) &&
       inRange(INPUT_6)) {
 
-    onOff(OUTPUT_A);
-    onOff(OUTPUT_B);
-    onOff(OUTPUT_C);
-    onOff(OUTPUT_D);
-    onOff(OUTPUT_E);
-    onOff(OUTPUT_F);
-  } 
+    on(OUTPUT_A);
+    on(OUTPUT_B);
+    on(OUTPUT_C);
+    on(OUTPUT_D);
+    on(OUTPUT_E);
+    on(OUTPUT_F);
+    
+  } else {
+    off(OUTPUT_A);
+    off(OUTPUT_B);
+    off(OUTPUT_C);
+    off(OUTPUT_D);
+    off(OUTPUT_E);
+    off(OUTPUT_F);
+    
+  }
 }
