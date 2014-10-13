@@ -1,19 +1,5 @@
 #include <LightUp.h>
 
-void on(int pin) {
-  digitalWrite(pin, 1);
-}
-
-void off(int pin) {
-  digitalWrite(pin, 0);
-}
-
-void onOff(int pin) {
-  on(pin);
-  delay(500);
-  off(pin); 
-}
-
 void allOn() {
   on(OUTPUT_A);
   on(OUTPUT_B);
