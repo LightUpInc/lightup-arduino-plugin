@@ -82,7 +82,6 @@ void StartSketch(void)
 	MCUCR = (1 << IVCE);
 	MCUCR = 0;
 
-	L_LED_OFF();
 	TX_LED_OFF();
 	RX_LED_OFF();
 
@@ -144,15 +143,17 @@ int main(void)
 	/* Watchdog may be configured with a 15 ms period so must disable it before going any further */
 	wdt_disable();
 
-	if (mcusr_state & (1<<EXTRF)) {
+	if (~(PINF | ~(1 << 7)) && ~(PINF | ~(1 << 6)) && ~(PINF & ~(1 << 5))) {
+
+	} else if (mcusr_state & (1<<EXTRF)) {
 		// External reset -  we should continue to self-programming mode.
-		StartSketch();
+		// StartSketch();
 	} else if ((mcusr_state & (1<<PORF)) && (pgm_read_word(0) != 0xFFFF)) {		
 		// After a power-on reset skip the bootloader and jump straight to sketch 
 		// if one exists.	
 		StartSketch();
 	} else if ((mcusr_state & (1<<BORF)) && (pgm_read_word(0) != 0xFFFF)) {		
-		// After a power-on reset skip the bootloader and jump straight to sketch 
+		// After a brown-out reset skip the bootloader and jump straight to sketch 
 		// if one exists.	
 		StartSketch();
 	} else if ((mcusr_state & (1<<WDRF)) && (bootKeyPtrVal != bootKey) && (pgm_read_word(0) != 0xFFFF)) {	
@@ -202,9 +203,9 @@ void SetupHardware(void)
 	
 	LED_SETUP();
 	CPU_PRESCALE(0); 
-	L_LED_OFF();
-	TX_LED_OFF();
-	RX_LED_OFF();
+	//L_LED_OFF();
+	// TX_LED_OFF();
+	// RX_LED_OFF();
 	
 	/* Initialize TIMER1 to handle bootloader timeout and LED tasks.  
 	 * With 16 MHz clock and 1/64 prescaler, timer 1 is clocked at 250 kHz
@@ -229,10 +230,10 @@ ISR(TIMER1_COMPA_vect, ISR_BLOCK)
 	TCNT1L = 0;
 
 	/* Check whether the TX or RX LED one-shot period has elapsed.  if so, turn off the LED */
-	if (TxLEDPulse && !(--TxLEDPulse))
-		TX_LED_OFF();
-	if (RxLEDPulse && !(--RxLEDPulse))
-		RX_LED_OFF();
+	//if (TxLEDPulse && !(--TxLEDPulse))
+	//	TX_LED_OFF();
+	//if (RxLEDPulse && !(--RxLEDPulse))
+	//	RX_LED_OFF();
 	
 	if (pgm_read_word(0) != 0xFFFF)
 		Timeout++;
