@@ -72,7 +72,6 @@
 		#define L_LED_5_ON()		PORTD |= (1<<6)
 		#define L_LED_6_OFF()		PORTD &= ~(1<<4)
 		#define L_LED_6_ON()		PORTD |= (1<<4)
-		#define L_LED_F_OFF()		PORTC &= ~(1<<6)
 		#define L_LED_3_OFF()		PORTD &= ~(1<<3)
 		#define L_LED_3_ON()		PORTD |= (1<<3)
 		#define L_LED_2_OFF()		PORTD &= ~(1<<1)
