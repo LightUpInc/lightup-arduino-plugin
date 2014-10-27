@@ -18,3 +18,8 @@ Usage
 -----
 
 Plug in the LightUp microcontroller block, select ```Tools > Board > LightUp``` and ```Sketch > Import Library > LightUp```. You should be good to go.
+
+Testing
+-----
+
+Tests are hosted on [codebender.cc](https://codebender.cc/user/lightup-dev) under the account lightup-dev.
