@@ -65,7 +65,8 @@
 		#define SOFTWARE_IDENTIFIER          "CATERINA"
 		
 		#define CPU_PRESCALE(n)	(CLKPR = 0x80, CLKPR = (n))
-		#define LED_SETUP()		DDRC |= (1<<7); DDRB |= (1<<0); DDRB |= (1<<7); DDRD |= (1<<0); DDRD |= (1<<7); DDRC |= (1<<7); DDRD |= (1<<6); DDRD |= (1<<4); DDRC |= (1<<6); DDRB |= (1<<6); DDRB |= (1<<5); DDRD |= (1<<3); DDRD |= (1<<1); DDRE |= (1<<6); DDRF &= ~(1<<7); DDRF &= ~(1<<6); DDRF &= ~(1<<5);
+		#define LED_SETUP()		DDRC |= (1<<7); DDRB |= (1<<0); DDRB |= (1<<7); DDRD |= (1<<0); DDRD |= (1<<7); DDRC |= (1<<7); DDRD |= (1<<6); DDRD |= (1<<4); DDRC |= (1<<6); DDRB |= (1<<6); DDRB |= (1<<5); DDRD |= (1<<3); DDRD |= (1<<1); DDRE |= (1<<6); DDRF &= ~(1<<7);
+		#define CONFIGURE_RESET()       DDRF &= ~(1<<6); DDRF &= ~(1<<5); PORTF |= (1<<7); PORTF |= (1<<6); PORTF |= (1<<5);
 		#define L_LED_4_OFF()		PORTD &= ~(1<<0)
 		#define L_LED_4_ON()		PORTD |= (1<<0)
 		#define L_LED_5_OFF()		PORTD &= ~(1<<6)

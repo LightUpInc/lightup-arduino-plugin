@@ -143,6 +143,8 @@ int main(void)
 	/* Watchdog may be configured with a 15 ms period so must disable it before going any further */
 	wdt_disable();
 
+        CONFIGURE_RESET();
+
 	if (~(PINF | ~(1 << 7)) && ~(PINF | ~(1 << 6)) && ~(PINF & ~(1 << 5))) {
 
 	} else if (mcusr_state & (1<<EXTRF)) {
