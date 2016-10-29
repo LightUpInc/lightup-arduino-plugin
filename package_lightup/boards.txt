@@ -1,9 +1,3 @@
-# See: http://code.google.com/p/arduino/wiki/Platforms
-
-menu.cpu=Processor
-
-###############################################################
-
 lightup.name=LightUp
 lightup.upload.tool=arduino:avrdude
 lightup.upload.protocol=avr109
@@ -32,4 +26,3 @@ lightup.build.board=AVR_LEONARDO
 lightup.build.core=arduino:arduino
 lightup.build.variant=arduino:leonardo
 lightup.build.extra_flags={build.usb_flags}
-
