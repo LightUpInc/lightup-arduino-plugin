@@ -16,7 +16,7 @@
                "category":"Contributed",
                "url":"https://cdn.rawgit.com/LightUpInc/lightup-arduino-plugin/master/package_lightup.tar.bz2",
                "archiveFileName":"package_lightup.tar.bz2",
-               "checksum":"SHA-256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+               "checksum":"SHA-256:37d269b25ca6ef21c9d53cd9ae1610c1ee4f926b40a7926a469b44c8cfefe100",
                "size":"712372",
                "help":{
                   "online":"www.lightup.io/contact"
