@@ -14,8 +14,8 @@
                "architecture":"avr",
                "version":"1.0.0",
                "category":"Contributed",
-               "url":"https://raw.githubusercontent.com/LightUpInc/lightup-arduino-plugin/master/package_lightup_index.json",
-               "archiveFileName":"package_lightup.zip",
+               "url":"https://cdn.rawgit.com/LightUpInc/lightup-arduino-plugin/master/package_lightup.tar.bz2",
+               "archiveFileName":"package_lightup.tar.bz2",
                "checksum":"SHA-256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
                "size":"712372",
                "help":{

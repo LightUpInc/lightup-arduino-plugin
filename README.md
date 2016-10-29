@@ -11,6 +11,8 @@ Installation
 
 TBD
 
+https://cdn.rawgit.com/LightUpInc/lightup-arduino-plugin/master/package_lightup_index.json
+
 Usage
 -----
 
