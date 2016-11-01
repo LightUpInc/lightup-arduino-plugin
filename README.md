@@ -1,4 +1,4 @@
-lightup-arduino-plugin
+LightUp Arduino Plugin
 ======================
 
 Requirements
